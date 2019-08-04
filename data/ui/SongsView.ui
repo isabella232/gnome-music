@@ -51,7 +51,7 @@
             <property name="expand">True</property>
             <property name="visible">True</property>
             <child>
-              <object class="GtkCellRendererText">
+              <object class="GtkCellRendererText" id="_title_cell">
                 <property name="ellipsize">end</property>
                 <property name="height">48</property>
                 <property name="xalign">0</property>
@@ -69,7 +69,7 @@
             <property name="expand">True</property>
             <property name="visible">True</property>
             <child>
-              <object class="GtkCellRendererText">
+              <object class="GtkCellRendererText" id="_artist_cell">
                 <property name="ellipsize">end</property>
                 <property name="xpad">32</property>
               </object>
@@ -84,7 +84,7 @@
             <property name="expand">True</property>
             <property name="visible">True</property>
             <child>
-              <object class="GtkCellRendererText">
+              <object class="GtkCellRendererText" id="_album_cell">
                 <property name="ellipsize">end</property>
                 <property name="xpad">32</property>
               </object>
