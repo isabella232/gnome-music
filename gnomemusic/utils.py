@@ -116,6 +116,20 @@ def get_song_artist(item):
             or "")
 
 
+def get_album_artist(item):
+    """Returns the album artist of a song.
+
+    Unlike `get_artist_name`, it does not fallback to the artist of
+    the song if the album artist is not set.
+
+    :param Grl.Media item: A Grilo Media object
+    :return: The song artist name
+    :rtype: str
+    """
+    return (item.get_album_artist()
+            or "")
+
+
 def get_media_title(item):
     """Returns the title of the media item.
 
