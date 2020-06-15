@@ -854,7 +854,8 @@ class MostPlayed(SmartPlaylist):
                         nie:title(nmm:musicAlbum(?song)) AS ?album
                         nfo:duration(?song) AS ?duration
                         nmm:trackNumber(?song) AS ?trackNumber
-                        nmm:setNumber(nmm:musicAlbumDisc(?song)) AS ?albumDiscNumber
+                        nmm:setNumber(
+                            nmm:musicAlbumDisc(?song)) AS ?albumDiscNumber
                     WHERE {
                         ?song a nmm:MusicPiece .
                         %(location_filter)s
@@ -905,7 +906,8 @@ class NeverPlayed(SmartPlaylist):
                         nie:title(nmm:musicAlbum(?song)) AS ?album
                         nfo:duration(?song) AS ?duration
                         nmm:trackNumber(?song) AS ?trackNumber
-                        nmm:setNumber(nmm:musicAlbumDisc(?song)) AS ?albumDiscNumber
+                        nmm:setNumber(
+                            nmm:musicAlbumDisc(?song)) AS ?albumDiscNumber
                     WHERE {
                         ?song a nmm:MusicPiece .
                         %(location_filter)s
@@ -962,7 +964,8 @@ class RecentlyPlayed(SmartPlaylist):
                         nie:title(nmm:musicAlbum(?song)) AS ?album
                         nfo:duration(?song) AS ?duration
                         nmm:trackNumber(?song) AS ?trackNumber
-                        nmm:setNumber(nmm:musicAlbumDisc(?song)) AS ?albumDiscNumber
+                        nmm:setNumber(
+                            nmm:musicAlbumDisc(?song)) AS ?albumDiscNumber
                     WHERE {
                         ?song a nmm:MusicPiece .
                         %(location_filter)s
@@ -1022,7 +1025,8 @@ class RecentlyAdded(SmartPlaylist):
                         nie:title(nmm:musicAlbum(?song)) AS ?album
                         nfo:duration(?song) AS ?duration
                         nmm:trackNumber(?song) AS ?trackNumber
-                        nmm:setNumber(nmm:musicAlbumDisc(?song)) AS ?albumDiscNumber
+                        nmm:setNumber(
+                            nmm:musicAlbumDisc(?song)) AS ?albumDiscNumber
                         ?added
                     WHERE {
                         ?song a nmm:MusicPiece ;
@@ -1075,7 +1079,8 @@ class Favorites(SmartPlaylist):
                             nie:title(nmm:musicAlbum(?song)) AS ?album
                             nfo:duration(?song) AS ?duration
                             nmm:trackNumber(?song) AS ?trackNumber
-                            nmm:setNumber(nmm:musicAlbumDisc(?song)) AS ?albumDiscNumber
+                            nmm:setNumber(
+                                nmm:musicAlbumDisc(?song)) AS ?albumDiscNumber
                             tracker:added(?song) AS ?added
                         WHERE {
                             ?song a nmm:MusicPiece .
