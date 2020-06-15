@@ -201,8 +201,9 @@ class CoreSong(GObject.GObject):
             self.props.media.set_artist(tags["artist"])
             writeback_keys.append(Grl.METADATA_KEY_ARTIST)
 
-        if (tags["mb-artist-id"]
-                and tags["mb-artist-id"] != self.props.media.get_mb_artist_id()):
+        mb_artist_tags = tags["mb-artist-id"]
+        if (mb_artist_tags
+                and mb_artist_tags != self.props.media.get_mb_artist_id()):
             self.props.media.set_mb_artist_id(tags["mb-artist-id"])
             writeback_keys.append(Grl.METADATA_KEY_MB_ARTIST_ID)
 
@@ -214,19 +215,21 @@ class CoreSong(GObject.GObject):
             self.props.media.set_album_disc_number(int(tags["disc"]))
             writeback_keys.append(Grl.METADATA_KEY_ALBUM_DISC_NUMBER)
 
-        if (tags["album-artist"]
-                and tags["album-artist"] != self.props.media.get_album_artist()):
+        album_artist = tags["album-artist"]
+        if (album_artist
+                and album_artist != self.props.media.get_album_artist()):
             self.props.media.set_album_artist(tags["album-artist"])
             writeback_keys.append(Grl.METADATA_KEY_ALBUM_ARTIST)
 
-        if (tags["mb-release-id"]
-                and tags["mb-release-id"] != self.props.media.get_mb_release_id()):
+        mb_release_tags = tags["mb-release-id"]
+        if (mb_release_tags
+                and mb_release_tags != self.props.media.get_mb_release_id()):
             self.props.media.set_mb_release_id(tags["mb-release-id"])
             writeback_keys.append(Grl.METADATA_KEY_MB_RELEASE_ID)
 
-        release_group_id = tags["mb-release-group-id"]
-        if (release_group_id
-                and release_group_id != self.props.media.get_mb_release_group_id()):
+        mb_rg_tags = tags["mb-release-group-id"]
+        if (mb_rg_tags
+                and mb_rg_tags != self.props.media.get_mb_release_group_id()):
             self.props.media.set_mb_release_group_id(release_group_id)
             writeback_keys.append(Grl.METADATA_KEY_MB_RELEASE_GROUP_ID)
 
