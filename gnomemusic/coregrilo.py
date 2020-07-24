@@ -96,11 +96,12 @@ class CoreGrilo(GObject.GObject):
     def _on_tracker_available_changed(self, klass, value):
         new_state = self._tracker_wrapper.props.tracker_available
         # FIXME:No removal support yet.
-        if new_state == TrackerState.AVAILABLE:
-            tracker_plugin = self._registry.lookup_plugin("grl-tracker")
-            if tracker_plugin:
-                self._registry.unload_plugin("grl-tracker")
-            self._registry.activate_plugin_by_id("grl-tracker")
+        tracker_plugin = self._registry.lookup_plugin("grl-tracker")
+        if (new_state == TrackerState.AVAILABLE
+                and tracker_plugin):
+            # The tracker plugin needs to be reloaded. First unload it. Then,
+            # it will be reloaded once the source has been removed.
+            self._registry.unload_plugin("grl-tracker")
 
     def _on_source_added(self, registry, source):
 
@@ -155,6 +156,13 @@ class CoreGrilo(GObject.GObject):
 
     def _on_source_removed(self, registry, source):
         # FIXME: Handle removing sources.
+        # If the tracker plugin was manually unloaded, it needs to be reloaded.
+        tracker_state = self._tracker_wrapper.props.tracker_available
+        if (source.props.source_id == "grl-tracker-source"
+                and tracker_state == TrackerState.AVAILABLE):
+            self._registry.activate_plugin_by_id("grl-tracker")
+            return
+
         self._log.debug("Removed source {}".format(source.props.source_id))
 
         # FIXME: Only removes search sources atm.
