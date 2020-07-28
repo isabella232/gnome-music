@@ -74,7 +74,7 @@ class CoreGrilo(GObject.GObject):
         self._wrappers = {}
         self._mb_wrappers = {}
 
-        self._tracker_wrapper = TrackerWrapper()
+        self._tracker_wrapper = TrackerWrapper(application)
         self._tracker_wrapper.bind_property(
             "tracker-available", self, "tracker-available",
             GObject.BindingFlags.SYNC_CREATE)
