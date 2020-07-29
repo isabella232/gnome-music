@@ -51,6 +51,7 @@ class GrlTrackerWrapper(GObject.GObject):
         Grl.METADATA_KEY_FAVOURITE,
         Grl.METADATA_KEY_ID,
         Grl.METADATA_KEY_MB_RECORDING_ID,
+        Grl.METADATA_KEY_MB_TRACK_ID,
         Grl.METADATA_KEY_PLAY_COUNT,
         Grl.METADATA_KEY_THUMBNAIL,
         Grl.METADATA_KEY_TITLE,
@@ -335,7 +336,7 @@ class GrlTrackerWrapper(GObject.GObject):
 
         query = """
         SELECT
-            ?type ?urn ?title ?id ?mbRecording ?url
+            ?type ?urn ?title ?id ?mbRecording ?mbTrack ?url
             ?artist ?album
             ?duration ?trackNumber
             ?albumDiscNumber ?creationDate
@@ -351,6 +352,7 @@ class GrlTrackerWrapper(GObject.GObject):
                         ?song AS ?id
                         tracker:referenceIdentifier(?recording_id)
                             AS ?mbRecording
+                        tracker:referenceIdentifier(?track_id) AS ?mbTrack
                         nie:isStoredAs(?song) AS ?url
                         nmm:artistName(nmm:artist(?song)) AS ?artist
                         nie:title(nmm:musicAlbum(?song)) AS ?album
@@ -365,6 +367,11 @@ class GrlTrackerWrapper(GObject.GObject):
                             ?song tracker:hasExternalReference ?recording_id .
                             ?recording_id tracker:referenceSource
                                 "https://musicbrainz.org/doc/Recording" .
+                        }
+                        OPTIONAL {
+                            ?song tracker:hasExternalReference ?track_id .
+                            ?track_id tracker:referenceSource
+                                "https://musicbrainz.org/doc/Track" .
                         }
                         OPTIONAL { ?song nie:contentCreated ?date . }
                         FILTER ( ?song in ( %(media_ids)s ) )
@@ -449,7 +456,7 @@ class GrlTrackerWrapper(GObject.GObject):
 
         query = """
         SELECT
-            ?type ?urn ?title ?id ?mbRecording ?url
+            ?type ?urn ?title ?id ?mbRecording ?mbTrack ?url
             ?artist ?album
             ?duration ?trackNumber
             ?albumDiscNumber ?creationDate
@@ -465,6 +472,7 @@ class GrlTrackerWrapper(GObject.GObject):
                         ?song AS ?id
                         tracker:referenceIdentifier(?recording_id)
                             AS ?mbRecording
+                        tracker:referenceIdentifier(?track_id) AS ?mbTrack
                         nie:isStoredAs(?song) AS ?url
                         nmm:artistName(nmm:artist(?song)) AS ?artist
                         nie:title(nmm:musicAlbum(?song)) AS ?album
@@ -479,6 +487,11 @@ class GrlTrackerWrapper(GObject.GObject):
                             ?song tracker:hasExternalReference ?recording_id .
                             ?recording_id tracker:referenceSource
                                 "https://musicbrainz.org/doc/Recording" .
+                        }
+                        OPTIONAL {
+                            ?song tracker:hasExternalReference ?track_id .
+                            ?track_id tracker:referenceSource
+                                "https://musicbrainz.org/doc/Track" .
                         }
                         OPTIONAL { ?song nie:contentCreated ?date . }
                         %(location_filter)s
@@ -768,7 +781,7 @@ class GrlTrackerWrapper(GObject.GObject):
 
         query = """
         SELECT
-            ?type ?id ?mbRecording ?url ?title
+            ?type ?id ?mbRecording ?mbTrack ?url ?title
             ?artist ?album
             ?duration ?trackNumber ?albumDiscNumber
             ?creationDate
@@ -782,6 +795,7 @@ class GrlTrackerWrapper(GObject.GObject):
                         ?song AS ?id
                         tracker:referenceIdentifier(?recording_id)
                             AS ?mbRecording
+                        tracker:referenceIdentifier(?track_id) AS ?mbTrack
                         nie:isStoredAs(?song) AS ?url
                         nie:title(?song) AS ?title
                         nmm:artistName(nmm:artist(?song)) AS ?artist
@@ -798,6 +812,11 @@ class GrlTrackerWrapper(GObject.GObject):
                             ?song tracker:hasExternalReference ?recording_id .
                             ?recording_id tracker:referenceSource
                                 "https://musicbrainz.org/doc/Recording" .
+                        }
+                        OPTIONAL {
+                            ?song tracker:hasExternalReference ?track_id .
+                            ?track_id tracker:referenceSource
+                                "https://musicbrainz.org/doc/Track" .
                         }
                         OPTIONAL { ?song nie:contentCreated ?date . }
                         FILTER (
