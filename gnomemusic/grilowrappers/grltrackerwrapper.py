@@ -338,7 +338,7 @@ class GrlTrackerWrapper(GObject.GObject):
         SELECT
             ?type ?urn ?title ?id ?mbRecording ?mbTrack ?url
             ?artist ?album
-            ?duration ?trackNumber
+            ?albumArtist ?duration ?trackNumber
             ?albumDiscNumber ?creationDate
             nie:usageCounter(?urn) AS ?playCount
             ?tag AS ?favorite
@@ -356,6 +356,7 @@ class GrlTrackerWrapper(GObject.GObject):
                         nie:isStoredAs(?song) AS ?url
                         nmm:artistName(nmm:artist(?song)) AS ?artist
                         nie:title(nmm:musicAlbum(?song)) AS ?album
+                        ?album_artist AS ?albumArtist
                         nfo:duration(?song) AS ?duration
                         nmm:trackNumber(?song) AS ?trackNumber
                         nmm:setNumber(nmm:musicAlbumDisc(?song))
@@ -374,6 +375,11 @@ class GrlTrackerWrapper(GObject.GObject):
                                 "https://musicbrainz.org/doc/Track" .
                         }
                         OPTIONAL { ?song nie:contentCreated ?date . }
+                        OPTIONAL {
+                            ?song nmm:musicAlbum ?album .
+                            ?album nmm:albumArtist/
+                                   nmm:artistName ?album_artist .
+                        }
                         FILTER ( ?song in ( %(media_ids)s ) )
                         %(location_filter)s
                     }
@@ -458,7 +464,7 @@ class GrlTrackerWrapper(GObject.GObject):
         SELECT
             ?type ?urn ?title ?id ?mbRecording ?mbTrack ?url
             ?artist ?album
-            ?duration ?trackNumber
+            ?albumArtist ?duration ?trackNumber
             ?albumDiscNumber ?creationDate
             nie:usageCounter(?urn) AS ?playCount
             ?tag AS ?favorite
@@ -476,6 +482,7 @@ class GrlTrackerWrapper(GObject.GObject):
                         nie:isStoredAs(?song) AS ?url
                         nmm:artistName(nmm:artist(?song)) AS ?artist
                         nie:title(nmm:musicAlbum(?song)) AS ?album
+                        ?album_artist AS ?albumArtist
                         nfo:duration(?song) AS ?duration
                         nmm:trackNumber(?song) AS ?trackNumber
                         nmm:setNumber(nmm:musicAlbumDisc(?song))
@@ -494,6 +501,11 @@ class GrlTrackerWrapper(GObject.GObject):
                                 "https://musicbrainz.org/doc/Track" .
                         }
                         OPTIONAL { ?song nie:contentCreated ?date . }
+                        OPTIONAL {
+                            ?song nmm:musicAlbum ?album .
+                            ?album nmm:albumArtist/
+                                   nmm:artistName ?album_artist .
+                        }
                         %(location_filter)s
                     }
                     ORDER BY ?title
@@ -783,7 +795,7 @@ class GrlTrackerWrapper(GObject.GObject):
         SELECT
             ?type ?id ?mbRecording ?mbTrack ?url ?title
             ?artist ?album
-            ?duration ?trackNumber ?albumDiscNumber
+            ?albumArtist ?duration ?trackNumber ?albumDiscNumber
             ?creationDate
             nie:usageCounter(?id) AS ?playCount
             ?tag AS ?favorite
@@ -800,6 +812,7 @@ class GrlTrackerWrapper(GObject.GObject):
                         nie:title(?song) AS ?title
                         nmm:artistName(nmm:artist(?song)) AS ?artist
                         nie:title(nmm:musicAlbum(?song)) AS ?album
+                        ?album_artist AS ?albumArtist
                         nfo:duration(?song) AS ?duration
                         nmm:trackNumber(?song) AS ?trackNumber
                         nmm:setNumber(nmm:musicAlbumDisc(?song))
@@ -819,6 +832,8 @@ class GrlTrackerWrapper(GObject.GObject):
                                 "https://musicbrainz.org/doc/Track" .
                         }
                         OPTIONAL { ?song nie:contentCreated ?date . }
+                        OPTIONAL { ?album nmm:albumArtist/
+                                          nmm:artistName ?album_artist . }
                         FILTER (
                             ?album = <%(album_id)s> &&
                             nmm:setNumber(nmm:musicAlbumDisc(?song)) =
