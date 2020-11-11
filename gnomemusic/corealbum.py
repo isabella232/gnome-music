@@ -140,7 +140,7 @@ class CoreAlbum(GObject.GObject):
         :rtype: string
         """
         if self._thumbnail is None:
-            self._thumbnail = "loading"
+            self._thumbnail = "generic"
             AlbumArt(self._application, self)
 
         return self._thumbnail
