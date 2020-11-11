@@ -9,7 +9,7 @@
       </object>
     </child>
     <child>
-      <object class="GtkScrolledWindow" id="playlist-container">
+      <object class="GtkScrolledWindow" id="_playlist_container">
         <property name="vexpand">True</property>
         <property name="visible">True</property>
         <child>
@@ -22,6 +22,31 @@
             <property name="visible">True</property>
             <style>
               <class name="songs-list"/>
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkBox" id="_empty_playlist">
+        <property name="hexpand">True</property>
+        <property name="orientation">vertical</property>
+        <property name="valign">center</property>
+        <property name="vexpand">True</property>
+        <property name="visible">False</property>
+        <child>
+          <object class="GtkImage" id="_empty_playlist_icon">
+            <property name="visible">True</property>
+            <property name="icon_size">0</property>
+            <property name="pixel_size">128</property>
+            <property name="margin_bottom">18</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel" id="_empty_playlist_label">
+            <property name="visible">True</property>
+            <style>
+              <class name="no-music-found-label"/>
             </style>
           </object>
         </child>
