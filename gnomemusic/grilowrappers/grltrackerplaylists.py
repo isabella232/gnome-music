@@ -89,7 +89,7 @@ class GrlTrackerPlaylists(GObject.GObject):
             "NeverPlayed": NeverPlayed(**args),
             "RecentlyPlayed": RecentlyPlayed(**args),
             "RecentlyAdded": RecentlyAdded(**args),
-            "Favorites": Favorites(**args)
+            "Starred": Starred(**args)
         }
 
         for playlist in smart_playlists.values():
@@ -1045,15 +1045,15 @@ class RecentlyAdded(SmartPlaylist):
         }
 
 
-class Favorites(SmartPlaylist):
-    """Favorites smart playlist"""
+class Starred(SmartPlaylist):
+    """Starred smart playlist"""
 
     def __init__(self, **args):
         super().__init__(**args)
 
-        self.props.tag_text = "FAVORITES"
+        self.props.tag_text = "Starred"
         # TRANSLATORS: this is a playlist name
-        self._title = _("Favorite Songs")
+        self._title = _("Starred Tracks")
         self.props.query = """
             SELECT
                 %(media_type)s AS ?type
