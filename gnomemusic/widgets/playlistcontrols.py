@@ -102,6 +102,10 @@ class PlaylistControls(Gtk.Box):
             PlaylistNotification.Type.PLAYLIST, self.props.playlist)
 
     @Gtk.Template.Callback()
+    def _on_play_button_clicked(self, button: Gtk.Button) -> None:
+        self._play_action.activate()
+
+    @Gtk.Template.Callback()
     def _on_rename_entry_changed(self, selection):
         selection_length = selection.props.text_length
         self._rename_done_button.props.sensitive = selection_length > 0
