@@ -123,6 +123,7 @@
             <property name="receives_default">True</property>
             <property name="image">previous_image</property>
             <property name="always_show_image">True</property>
+	    <property name="valign">center</property>
             <property name="tooltip_text" translatable="yes">Previous</property>
             <signal name="clicked" handler="_on_prev_button_clicked" swapped="no"/>
           </object>
@@ -136,6 +137,7 @@
             <property name="receives_default">True</property>
             <property name="image">_play_image</property>
             <property name="always_show_image">True</property>
+	    <property name="valign">center</property>
             <property name="tooltip_text" translatable="yes">Play</property>
             <signal name="clicked" handler="_on_play_button_clicked" swapped="no"/>
           </object>
@@ -149,6 +151,7 @@
             <property name="receives_default">True</property>
             <property name="image">next_image</property>
             <property name="always_show_image">True</property>
+	    <property name="valign">center</property>
             <property name="tooltip_text" translatable="yes">Next</property>
             <signal name="clicked" handler="_on_next_button_clicked" swapped="no"/>
           </object>
