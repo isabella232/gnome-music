@@ -17,6 +17,12 @@
     background-color: transparent;
 }
 
+.playlist-icon {
+    padding: 10px;
+    border-radius: 50%;
+    border: 1px solid @borders;
+}
+
 /* AlbumWidget */
 .title-artist {
     font-size: larger;
