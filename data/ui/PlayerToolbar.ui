@@ -172,6 +172,8 @@
             <property name="visible">True</property>
             <property name="orientation">horizontal</property>
             <property name="can_focus">False</property>
+            <property name="margin_start">80</property>
+            <property name="margin_end">80</property>
             <child>
               <object class="GtkLabel" id="_progress_time_label">
                 <property name="visible">True</property>
