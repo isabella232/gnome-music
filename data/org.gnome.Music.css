@@ -184,3 +184,8 @@ padding: 0px;
 .lastfm-status-label {
     font-weight: bold;
 }
+
+/* Add a border to some flat buttons */
+.flat-border {
+    border: 1px solid alpha(@borders, 0.75);
+}

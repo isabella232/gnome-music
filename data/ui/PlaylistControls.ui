@@ -126,6 +126,8 @@
             <signal name="clicked" handler="_on_play_button_clicked" swapped="no"/>
             <style>
               <class name="circular"/>
+              <class name="flat"/>
+              <class name="flat-border"/>
             </style>
           </object>
         </child>
@@ -144,6 +146,8 @@
             <style>
               <class name="image-button"/>
               <class name="circular"/>
+              <class name="flat"/>
+              <class name="flat-border"/>
             </style>
           </object>
         </child>
