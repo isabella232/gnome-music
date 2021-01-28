@@ -132,6 +132,10 @@
                 <property name="valign">center</property>
                 <property name="tooltip_text" translatable="yes">Previous</property>
                 <signal name="clicked" handler="_on_prev_button_clicked" swapped="no"/>
+                <style>
+                  <class name="flat"/>
+                  <class name="semi-circular"/>
+                </style>
               </object>
             </child>
             <child>
@@ -146,6 +150,10 @@
                 <property name="valign">center</property>
                 <property name="tooltip_text" translatable="yes">Play</property>
                 <signal name="clicked" handler="_on_play_button_clicked" swapped="no"/>
+                <style>
+                  <class name="flat"/>
+                  <class name="semi-circular"/>
+                </style>
               </object>
             </child>
             <child>
@@ -160,6 +168,10 @@
                 <property name="valign">center</property>
                 <property name="tooltip_text" translatable="yes">Next</property>
                 <signal name="clicked" handler="_on_next_button_clicked" swapped="no"/>
+                <style>
+                  <class name="flat"/>
+                  <class name="semi-circular"/>
+                </style>
               </object>
             </child>
             <style>

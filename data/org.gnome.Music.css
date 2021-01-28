@@ -49,6 +49,10 @@ box#ArtistAlbumsWidget .artist-label {
     font-size: smaller;
 }
 
+.semi-circular {
+    border-radius: 20px;
+}
+
 /* PlaylistControls */
 .playlist-name-label {
   font-weight: bold;
