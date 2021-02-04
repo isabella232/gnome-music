@@ -39,6 +39,9 @@ class PlaylistsView(Gtk.Box):
 
     title = GObject.Property(
         type=str, default=_("Playlists"), flags=GObject.ParamFlags.READABLE)
+    icon_name = GObject.Property(
+        type=str,
+        default=_('view-list-symbolic'), flags=GObject.ParamFlags.READABLE)
 
     _sidebar = Gtk.Template.Child()
 

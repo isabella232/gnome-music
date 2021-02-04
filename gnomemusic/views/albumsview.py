@@ -45,6 +45,10 @@ class AlbumsView(Gtk.Stack):
     selection_mode = GObject.Property(type=bool, default=False)
     title = GObject.Property(
         type=str, default=_("Albums"), flags=GObject.ParamFlags.READABLE)
+    icon_name = GObject.Property(
+        type=str,
+        default=_('media-optical-cd-audio-symbolic'),
+        flags=GObject.ParamFlags.READABLE)
 
     _scrolled_window = Gtk.Template.Child()
     _flowbox = Gtk.Template.Child()

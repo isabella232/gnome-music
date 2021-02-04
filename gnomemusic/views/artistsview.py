@@ -41,6 +41,9 @@ class ArtistsView(Gtk.Box):
 
     title = GObject.Property(
         type=str, default=_("Artists"), flags=GObject.ParamFlags.READABLE)
+    icon_name = GObject.Property(
+        type=str,
+        default=_('system-users-symbolic'), flags=GObject.ParamFlags.READABLE)
 
     _artist_container = Gtk.Template.Child()
     _artist_view = Gtk.Template.Child()

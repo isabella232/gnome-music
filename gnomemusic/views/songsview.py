@@ -42,6 +42,9 @@ class SongsView(Gtk.ScrolledWindow):
 
     title = GObject.Property(
         type=str, default=_("Songs"), flags=GObject.ParamFlags.READABLE)
+    icon_name = GObject.Property(
+        type=str,
+        default=_('emblem-music-symbolic'), flags=GObject.ParamFlags.READABLE)
 
     _duration_renderer = Gtk.Template.Child()
     _now_playing_column = Gtk.Template.Child()
