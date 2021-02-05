@@ -160,7 +160,7 @@
                 <property name="margin-top">20</property>
                 <property name="visible">True</property>
                 <style>
-                  <class name="songs-list"/>
+                  <class name="content"/>
                 </style>
               </object>
             </child>
